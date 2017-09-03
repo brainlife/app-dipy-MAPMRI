@@ -1,0 +1,23 @@
+{
+  "name": "app-dipy-MAPMRI",
+  "version": "1.0.0",
+  "description": "Continuous and analytical diffusion signal modelling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "start.sh",
+    "stop": "stop.sh",
+    "status": "status.sh"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brain-life/app-dipy-MAPMRI.git"
+  },
+  "author": "Jeshuran Thangaraj <jpthanga@iu.edu>",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/brain-life/app-dipy-MAPMRI/issues"
+  },
+  "homepage": "https://github.com/brain-life/app-dipy-MAPMRI#readme"
+}
