@@ -4,19 +4,26 @@ from dipy.io.gradients import read_bvals_bvecs
 from dipy.core.gradients import gradient_table
 import matplotlib
 matplotlib.use('agg')
-from dipy.data import fetch_cenir_multib, read_cenir_multib, get_sphere
+import json
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-import numpy
-from pylab import plot,imshow,show,figure
 
-img = nib.load("./dwi.nii.gz")
-bvals,bvecs = read_bvals_bvecs("./dwi.bvals","./dwi.bvecs")
+with open('config.json') as config_json:
+    config = json.load(config_json)
 
-print(bvals)
+    #Paths to data
+    data_file = str(config['data_file'])
+    data_bval = str(config['data_bval'])
+    data_bvec = str(config['data_bvec'])
 
-big_delta = 0.0218  # seconds
-small_delta = 0.0129  # seconds
+    small_delta = float(config['small_delta'])
+    big_delta = float(config['big_delta'])
+
+img = nib.load(data_file)
+bvals,bvecs = read_bvals_bvecs(data_bval,data_bvec)
+
+# big_delta = 0.0218  # seconds
+# small_delta = 0.0129  # seconds
 gtab = gradient_table(bvals=bvals, bvecs=bvecs,
                       small_delta=small_delta,
                       big_delta=big_delta, b0_threshold=50)
@@ -24,7 +31,7 @@ gtab = gradient_table(bvals=bvals, bvecs=bvecs,
 data = img.get_data()
 data_small = data[60:85, 80:81, 60:85]
 
-print('data.shape (%d, %d, %d, %d)' % data.shape)
+# print('data.shape (%d, %d, %d, %d)' % data.shape)
 
 radial_order = 6
 map_model_laplacian_aniso = mapmri.MapmriModel(gtab, radial_order=radial_order,
