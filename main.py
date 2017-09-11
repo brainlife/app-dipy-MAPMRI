@@ -4,20 +4,25 @@ from dipy.io.gradients import read_bvals_bvecs
 from dipy.core.gradients import gradient_table
 import matplotlib
 matplotlib.use('agg')
+from dipy.data import fetch_cenir_multib, read_cenir_multib, get_sphere
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+import numpy
+from pylab import plot,imshow,show,figure
 
 img = nib.load("./dwi.nii.gz")
 bvals,bvecs = read_bvals_bvecs("./dwi.bvals","./dwi.bvecs")
 
-big_delta = 0.0365  # seconds
-small_delta = 0.0157  # seconds
+print(bvals)
+
+big_delta = 0.0218  # seconds
+small_delta = 0.0129  # seconds
 gtab = gradient_table(bvals=bvals, bvecs=bvecs,
-                      small_delta=big_delta,
-                      big_delta=small_delta)
+                      small_delta=small_delta,
+                      big_delta=big_delta, b0_threshold=50)
 
 data = img.get_data()
-data_small = data[40:65, 50:51, 35:60]
+data_small = data[60:85, 80:81, 60:85]
 
 print('data.shape (%d, %d, %d, %d)' % data.shape)
 
@@ -35,9 +40,9 @@ map_model_both_aniso = mapmri.MapmriModel(gtab, radial_order=radial_order,
                                           laplacian_weighting=.05,
                                           positivity_constraint=True)
 
-mapfit_laplacian_aniso = map_model_laplacian_aniso.fit(data_small)
-mapfit_positivity_aniso = map_model_positivity_aniso.fit(data_small)
-mapfit_both_aniso = map_model_both_aniso.fit(data_small)
+mapfit_laplacian_aniso = map_model_laplacian_aniso.fit(data)
+mapfit_positivity_aniso = map_model_positivity_aniso.fit(data)
+mapfit_both_aniso = map_model_both_aniso.fit(data)
 
 # generating RTOP plots
 fig = plt.figure(figsize=(10, 5))
