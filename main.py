@@ -29,6 +29,7 @@ gtab = gradient_table(bvals=bvals, bvecs=bvecs,
                       big_delta=big_delta, b0_threshold=50)
 
 data = img.get_data()
+
 data_small = data[60:85, 80:81, 60:85]
 
 # print('data.shape (%d, %d, %d, %d)' % data.shape)
@@ -47,9 +48,9 @@ map_model_both_aniso = mapmri.MapmriModel(gtab, radial_order=radial_order,
                                           laplacian_weighting=.05,
                                           positivity_constraint=True)
 
-mapfit_laplacian_aniso = map_model_laplacian_aniso.fit(data)
-mapfit_positivity_aniso = map_model_positivity_aniso.fit(data)
-mapfit_both_aniso = map_model_both_aniso.fit(data)
+mapfit_laplacian_aniso = map_model_laplacian_aniso.fit(data_small)
+mapfit_positivity_aniso = map_model_positivity_aniso.fit(data_small)
+mapfit_both_aniso = map_model_both_aniso.fit(data_small)
 
 # generating RTOP plots
 fig = plt.figure(figsize=(10, 5))
