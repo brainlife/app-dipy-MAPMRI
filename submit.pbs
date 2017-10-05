@@ -12,16 +12,16 @@ if [ -z $SERVICE_DIR ]; then export SERVICE_DIR=`pwd`; fi
 if [ $ENV == "IUHPC" ]; then
 	if [ $HPC == "KARST" ]; then
 		#not yet yested for brlife@karst (probably don't need anaconda2, dipy, nibabel)
-		module unload python
-		module load anaconda2
+		#module unload python
+		#module load anaconda2
 
-		export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/dipy
-		export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/github_repos/nibabel
-		export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/github_repos/pyAFQ
+		#export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/dipy
+		#export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/github_repos/nibabel
+		#export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/github_repos/pyAFQ
 	fi
 	if [ $HPC == "CARBONATE" ]; then
 		#deps > pip install dipy nibabel boto3 cloudpickle dask toolz
-		export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/github_repos/nibabel
+		#export PYTHONPATH=$PYTHONPATH:/N/u/jpthanga/Karst/github_repos/nibabel
 		#export PYTHONPATH=$PYTHONPATH:/N/u/brlife/Karst/git/dipy
 	fi
 fi
@@ -29,7 +29,7 @@ fi
 if [ $ENV == "VM" ]; then
 	#not tested yet
 	#deps > pip install dipy nibabel
-	export PYTHONPATH=$PYTHONPATH:/usr/local/MapMRI
+	#export PYTHONPATH=$PYTHONPATH:/usr/local/MapMRI
 fi
 
 echo "running main"
