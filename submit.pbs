@@ -3,7 +3,6 @@
 #PBS -N app-MapMRI
 #PBS -V
 
-
 #for local testing
 if [ -z $SERVICE_DIR ]; then export SERVICE_DIR=`pwd`; fi
 #ENV="IUHPC"
