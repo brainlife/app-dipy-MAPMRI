@@ -12,9 +12,9 @@ with open('config.json') as config_json:
     config = json.load(config_json)
 
     #Paths to data
-    data_file = str(config['data_file'])
-    data_bval = str(config['data_bval'])
-    data_bvec = str(config['data_bvec'])
+    data_file = str(config['dwi'])
+    data_bval = str(config['bvals'])
+    data_bvec = str(config['bvecs'])
 
     small_delta = float(config['small_delta'])
     big_delta = float(config['big_delta'])
