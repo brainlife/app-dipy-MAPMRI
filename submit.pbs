@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l nodes=1:ppn=16:dc2,walltime=00:20:00
+#PBS -l nodes=1:ppn=16:dc2,walltime=02:00:00
 #PBS -N app-MapMRI
 #PBS -V
 
@@ -18,8 +18,8 @@ if [ $ret -ne 0 ]; then
     exit $ret
 fi
 
-count=$(ls MAPMRI_maps_regularization.png | wc -l)
-if [ $count -eq 1 ];
+count=$(ls $SERVICE_DIR/output/ | wc -l)
+if [ $count -eq 5 ];
 then
 	echo 0 > finished
 else

@@ -8,13 +8,12 @@
     "start": "start.sh",
     "stop": "stop.sh",
     "status": "status.sh"
-
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brain-life/app-dipy-MAPMRI.git"
   },
-  "author": "Jeshuran Thangaraj <jpthanga@iu.edu>",
+  "author": "Jeshuran Thangaraj <jpthanga@iu.edu>, Aman Arya <aarya22@uw.edu>",
   "license": "",
   "bugs": {
     "url": "https://github.com/brain-life/app-dipy-MAPMRI/issues"
