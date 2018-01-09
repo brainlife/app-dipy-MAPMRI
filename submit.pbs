@@ -19,7 +19,7 @@ if [ $ret -ne 0 ]; then
 fi
 
 count=$(ls $SERVICE_DIR/output/ | wc -l)
-if [ $count -eq 5 ];
+if [ $count -eq 8 ];
 then
 	echo 0 > finished
 else

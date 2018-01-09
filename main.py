@@ -17,11 +17,10 @@ def main():
 
     path = os.getcwd()
     path = os.path.join(path, 'output')
-    mmri_flow = ReconstMAPMRIFlow
+    mmri_flow = ReconstMAPMRIFlow()
     save_metrics = ['rtop', 'msd', 'qiv', 'rtap', 'rtpp', 'ng', 'perng', 'parng']
     mmri_flow.run(data_file=data_file, data_bval=data_bval, data_bvec=data_bvec,
                   out_dir=path, laplacian=lap, positivity=pos, save_metrics=save_metrics,
                   lap_weighting=lap_weighting)
-
 
 main()
