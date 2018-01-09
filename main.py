@@ -16,7 +16,6 @@ def main():
         lap_weighting = float(config['laplacian_weighting'])
 
     path = os.getcwd()
-    path = os.path.join(path, 'output')
     mmri_flow = ReconstMAPMRIFlow()
     save_metrics = ['rtop', 'msd', 'qiv', 'rtap', 'rtpp', 'ng', 'perng', 'parng']
     mmri_flow.run(data_file=data_file, data_bval=data_bval, data_bvec=data_bvec,
